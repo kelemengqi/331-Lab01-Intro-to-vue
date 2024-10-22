@@ -87,9 +87,8 @@ li {
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
 }
-
-.out-of-stock-img {
-  opacity:0.5
+.out-of-stock-image {
+  filter: grayscale(100%);  /* 灰度图像效果 */
 }
 
 p {

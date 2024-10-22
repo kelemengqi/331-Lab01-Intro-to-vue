@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Intro SE331</title>
-    <!-- Import Styles -->
-    <link rel="stylesheet" href="./assets/styles.css" />
-    <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 产品展示</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script> <!-- 使用开发版本 -->
+    <link rel="stylesheet" href="assets/styles.css"> <!-- 样式文件 -->
 </head>
 
 <body>
     <div id="app">
-        <h1>Product goes here</h1>
-    </div>
+        <!-- 导航栏 -->
+        <div class="nav-bar"></div>
+        
+        <!-- 购物车 -->
+        <div class="cart">Cart ({{ cart }})</div> <!-- 修正了 class 的拼写错误 -->
 
-    <!-- Import Js -->
-    <script src="./main.js"></script>
+       
+        <product-display :premium="premium"></product-display>
+
+        
+    </div>
+    <script src="./components/ProductDisplay.js"></script>
+
+    <script src="./main.js"></script> <!-- 引入JS文件 -->
 </body>
 
 </html>
