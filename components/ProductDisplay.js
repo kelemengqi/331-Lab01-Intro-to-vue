@@ -3,13 +3,13 @@ const productDisplay = {
         <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
-                    <img :src="image">
+                    <img :src="image" alt="Product Image">
                 </div>
             </div>
             <div class="product-info">
                 <h1>{{ title }}</h1>
-                <p v-if="inventory > 10">In Stock</p>
-                <p v-else-if="inventory <= 10 && inventory > 0">Almost out of Stock</p>
+                <p v-if="inStock > 10">In Stock</p>
+                <p v-else-if="inStock <= 10 && inStock > 0">Almost out of Stock</p>
                 <p v-else>Out of Stock</p>
                 <p>Shipping: {{ shipping }}</p>
                 <ul>
@@ -29,60 +29,63 @@ const productDisplay = {
                     :class="{ disabledButton: !inStock }">
                     Add To Cart
                 </button>
+                <button 
+                    class="button remove-button" 
+                    @click="removeFromCart">
+                    Remove From Cart
+                </button>
             </div>
+            <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+            <review-form @review-submitted="addReview"></review-form>
         </div>
     `,
     props: {
-        premium: Boolean
+        premium: Boolean,
     },
-    setup(props) {
+    setup(props, { emit }) {
         const product = ref('Boots');
         const brand = ref('SE 331');
-        const inventory = ref(100);
-        const details = ref([
-            '50% cotton',
-            '30% wool',
-            '20% polyester'
-        ]);
+        const selectedVariant = ref(0);
+        const details = ref(['50% cotton', '30% wool', '20% polyester']);
         const variants = ref([
             { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 }
         ]);
-        const selectedVariant = ref(0);
-        const cart = ref(0);
-
-        // 计算运费
-        const shipping = computed(() => {
-            return props.premium ? 'Free' : 30;
-        });
+        
+        const reviews = ref([]); // 在这里定义 reviews 数组
+        const image = computed(() => variants.value[selectedVariant.value].image);
+        const inStock = computed(() => variants.value[selectedVariant.value].quantity);  // 注意这里
+        const title = computed(() => `${brand.value} ${product.value}`);
+        const shipping = computed(() => (props.premium ? 'Free' : 30));  // 修正位置
 
         function updateVariant(index) {
             selectedVariant.value = index;
         }
 
-        const image = computed(() => variants.value[selectedVariant.value].image);
-        const inStock = computed(() => variants.value[selectedVariant.value].quantity);
-        const title = computed(() => `${brand.value} ${product.value}`);
-
         function addToCart() {
-            cart.value += 1;
+            emit('add-to-cart', variants.value[selectedVariant.value].id); 
         }
 
-        function updateImage(variantImage) {
-            image.value = variantImage;
+        function removeFromCart() {
+            emit('remove-from-cart', variants.value[selectedVariant.value].id); 
+        }
+
+        function addReview(review) {
+            reviews.value.push(review); // 确保这使用正确的 reviews 数组
         }
 
         return {
             title,
             image,
-            inStock,
-            inventory,
+            inStock,  // 暴露 inStock
             details,
             variants,
-            addToCart,
-            updateImage,
+            shipping,
             updateVariant,
-            shipping // 确保将 shipping 返回
+            addToCart,
+            removeFromCart,
+            reviews,  // 暴露 reviews
+            addReview, // 暴露 addReview
         };
-    }
-}
+    },
+};
