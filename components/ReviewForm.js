@@ -1,3 +1,11 @@
+/*
+ * @Author: kelemengqi 1565916105@qq.com
+ * @Date: 2024-10-23 13:55:24
+ * @LastEditors: kelemengqi 1565916105@qq.com
+ * @LastEditTime: 2024-10-30 15:24:33
+ * @FilePath: /331-Lab01-Intro-to-vue/components/ReviewForm.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const { reactive } = Vue;
 
 const reviewForm = {
@@ -14,11 +22,11 @@ const reviewForm = {
             <label for="rating">Rating:</label>
             <select id="rating" v-model.number="form.rating">
                 <option value="">Select rating</option> <!-- 添加默认选项 -->
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
+                <option> 1 juest so so</option>
+                <option> 2 bad</option>
+                <option> 3 wonderful</option>
+                <option> 4 better</option>
+                <option> 5 good</option>
             </select>
 
             <label>Would you recommend this product?</label>

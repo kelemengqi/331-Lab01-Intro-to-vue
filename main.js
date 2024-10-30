@@ -1,3 +1,4 @@
+// main.js
 const { createApp, ref, computed } = Vue;
 
 const app = createApp({
@@ -16,6 +17,10 @@ const app = createApp({
             }
         }
 
+        function clearCart() {
+            cart.value = []; // 清空购物车
+        }
+
         const uniqueCart = computed(() => [...new Set(cart.value)]); // 获取唯一产品 ID
 
         function countInCart(id) {
@@ -27,13 +32,22 @@ const app = createApp({
             premium,
             updateCart,
             removeFromCart,
+            clearCart, // 暴露清空购物车的方法
             uniqueCart,
             countInCart,
         };
     },
 });
 
-app.component('product-display', productDisplay);
+// 组件注册
+app.component('product-display', {
+    ...productDisplay,
+    methods: {
+        clearCart() {
+            this.clearCart(); // 调用清空购物车的方法
+        },
+    },
+});
 app.component('review-form', reviewForm);
-app.component('review-list',reviewList);
+app.component('review-list', reviewList);
 app.mount('#app');

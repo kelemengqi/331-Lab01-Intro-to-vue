@@ -34,6 +34,11 @@ const productDisplay = {
                     @click="removeFromCart">
                     Remove From Cart
                 </button>
+                <button 
+                    class="button" 
+                    @click="clearCart"> <!-- 清空购物车按钮 -->
+                    Clear Cart
+                </button>
             </div>
             <review-list v-if="reviews.length" :reviews="reviews"></review-list>
             <review-form @review-submitted="addReview"></review-form>
@@ -43,15 +48,15 @@ const productDisplay = {
         premium: Boolean,
     },
     setup(props, { emit }) {
-        const product = ref('Boots');
-        const brand = ref('SE 331');
+        const product = ref(' MY Boots 100point');
+        const brand = ref('SE331');
         const selectedVariant = ref(0);
-        const details = ref(['50% cotton', '30% wool', '20% polyester']);
+        const details = ref(['40% cotton', '25% wool', '35% polyester']);
         const variants = ref([
             { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 }
         ]);
-        
+
         const reviews = ref([]); // 在这里定义 reviews 数组
         const image = computed(() => variants.value[selectedVariant.value].image);
         const inStock = computed(() => variants.value[selectedVariant.value].quantity);  // 注意这里
@@ -70,6 +75,10 @@ const productDisplay = {
             emit('remove-from-cart', variants.value[selectedVariant.value].id); 
         }
 
+        function clearCart() {
+            emit('clear-cart',variants.value[selectedVariant.value].id); // 清空购物车的事件
+        }
+
         function addReview(review) {
             reviews.value.push(review); // 确保这使用正确的 reviews 数组
         }
@@ -84,6 +93,7 @@ const productDisplay = {
             updateVariant,
             addToCart,
             removeFromCart,
+            clearCart, // 暴露清空购物车的方法
             reviews,  // 暴露 reviews
             addReview, // 暴露 addReview
         };

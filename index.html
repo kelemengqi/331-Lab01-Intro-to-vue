@@ -1,10 +1,18 @@
+<!--
+ * @Author: kelemengqi 1565916105@qq.com
+ * @Date: 2024-10-22 10:26:52
+ * @LastEditors: kelemengqi 1565916105@qq.com
+ * @LastEditTime: 2024-10-30 15:32:40
+ * @FilePath: /331-Lab01-Intro-to-vue/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue Show</title>
+    <title>vue show </title>
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -12,7 +20,7 @@
 <body>
     <div id="app">
         <div class="nav-bar"></div>
-        <div class="cart">Cart ({{ cart.length }})</div>
+        <div class="cart">my Cart ({{ cart.length }})</div>
 
         <div v-for="id in uniqueCart" :key="id">
             Product {{ id }}: {{ countInCart(id) }} times
@@ -24,6 +32,9 @@
             @remove-from-cart="removeFromCart">
         </product-display>
     </div>
+
+    
+    
 
     <script src="./components/ProductDisplay.js"></script>
     <script src="./components/ReviewForm.js"></script>

@@ -1,181 +1,150 @@
 body {
-  background-color: #f2f2f2;
-  margin: 0px;
-  font-family: tahoma;
-  color: #282828;
-}
-
-.button {
-  margin: 30px;
-  background-color: #39495c;
-  border-radius: 5px;
-  font-size: 18px;
-  width: 160px;
-  height: 60px;
-  color: white;
-  padding: 20px;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-  text-align: center;
-  cursor: pointer;
-}
-
-.cart {
-  margin: 25px 100px;
-  float: right;
-  border: 1px solid #d8d8d8;
-  padding: 10px 30px;
-  background-color: white;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
-}
-
-.color-circle {
-  width: 50px;
-  height: 50px;
-  margin-top: 8px;
-  border: 2px solid #d8d8d8;
-  border-radius: 50%;
-}
-
-
-.disabledButton {
-  background-color: #d8d8d8;
-  cursor: not-allowed;
-}
-
-h1 {
-  font-size: 50px;
-}
-
-h3 {
-  font-size: 25px;
-}
-
-img {
-  border: 2px solid #d8d8d8;
-  width: 70%;
-  margin: 40px;
-  padding: 15px;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
-}
-
-input {
-  width: 100%;
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-label {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-li {
-  font-size: 18px;
+  background-color: #eef1f5; /* 更柔和的背景色 */
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* 现代字体 */
+  color: #333; /* 更深的字体颜色 */
 }
 
 .nav-bar {
   background: linear-gradient(-90deg, #84cf6a, #16c0b0);
-  height: 60px;
-  margin-bottom: 25px;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
-}
-.out-of-stock-image {
-  filter: grayscale(100%);  /* 灰度图像效果 */
+  height: 70px; /* 增加导航栏高度 */
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  padding: 0 20px; /* 内边距 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影 */
 }
 
-p {
-  font-size: 22px;
+.cart {
+  margin-left: auto; /* 将购物车按钮推到右边 */
+  font-size: 20px; /* 调整字体大小 */
+  font-weight: bold; /* 加粗 */
+  color: white; /* 字体颜色为白色 */
 }
 
 .product-display {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .product-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center; /* 居中产品 */
+  margin-bottom: 2rem; /* 添加底部间距 */
 }
 
-.product-image,
+.product-image img {
+  max-width: 100%; /* 适应容器宽度 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
+}
+
 .product-info {
-  width: 50%;
+  padding: 1rem;
+  background: #fff; /* 背景颜色 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
+}
+
+.button {
+  margin: 10px 5px; /* 按钮间距 */
+  background-color: #39495c;
+  border: none; /* 去除默认边框 */
+  border-radius: 5px; /* 圆角 */
+  font-size: 16px; /* 字体大小 */
+  height: 50px; /* 按钮高度 */
+  color: white; /* 字体颜色 */
+  padding: 10px 20px; /* 内边距 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 增加阴影效果 */
+  cursor: pointer; /* 鼠标指针 */
+  transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+}
+
+.button:hover {
+  background-color: #4b6077; /* 悬停时改变背景色 */
+  transform: scale(1.05); /* 悬停时轻微放大 */
+}
+
+.disabledButton {
+  background-color: #d8d8d8; /* 禁用按钮颜色 */
+  cursor: not-allowed; /* 禁用鼠标指针 */
+}
+
+.color-circle {
+  width: 50px;
+  height: 50px;
+  margin: 8px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%; /* 圆形 */
+  transition: transform 0.2s; /* 增加动画效果 */
+}
+
+.color-circle:hover {
+  transform: scale(1.1); /* 鼠标悬停时放大 */
+}
+
+h1 {
+  font-size: 48px; /* 标题大小 */
+  text-align: center; /* 中心对齐 */
+  margin: 1rem 0; /* 上下间距 */
+}
+
+h3 {
+  font-size: 26px; /* 子标题大小 */
+  margin: 1rem 0; /* 上下间距 */
 }
 
 .review-form {
   display: flex;
   flex-direction: column;
-  width: 425px;
+  width: 400px; /* 固定宽度 */
+  margin: 20px auto; /* 自动左右边距 */
   padding: 20px;
-  margin: 40px;
-  border: 2px solid #d8d8d8;
-  background-color: white;
-  -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
+  background-color: white; /* 背景颜色 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
 }
 
 .review-container {
-  width: 425px;
+  width: 400px; /* 固定宽度 */
+  margin: 20px auto; /* 自动左右边距 */
   padding: 20px;
-  background-color: white;
-  -webkit-box-shadow: 0px 2px 20px -12px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 2px 20px -12px rgba(0, 0, 0, 0.57);
-  box-shadow: 2px 20px -12px rgba(0, 0, 0, 0.57);
-  margin-left: 40px;
-  border: 2px solid #d8d8d8;
+  background-color: white; /* 背景颜色 */
+  border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 增加阴影效果 */
 }
 
-.review-container li {
-  margin-bottom: 30px;
-}
-
-.review-form .button {
-  display: block;
-  margin: 30px auto;
-}
-
+textarea,
+input,
 select {
-  height: 40px;
-  font-size: 20px;
-  background-color: white;
-  cursor: pointer;
+  width: 100%; /* 宽度 100% */
+  padding: 10px; /* 内边距 */
+  border-radius: 5px; /* 圆角边框 */
+  border: 1px solid #ccc; /* 边框样式 */
+  margin-bottom: 20px; /* 下间距 */
 }
 
-textarea {
-  width: 95%;
-  height: 70px;
-  padding: 10px;
-  font-size: 20px;
-  margin-bottom: 20px;
+label {
+  font-size: 18px; /* 标签字体大小 */
+  margin-bottom: 5px; /* 下边距 */
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: none; /* 无列表样式 */
+  padding: 0; /* 去除内边距 */
+}
+
+li {
+  margin-bottom: 15px; /* 下间距 */
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
+  .product-container {
+    flex-direction: column; /* 列方向排列 */
   }
 
-  .product-image,
-  .product-info {
-    margin-left: 10px;
-    width: 100%;
-  }
-
-  .review-form {
-    width: 90%;
+  .review-form,
+  .review-container {
+    width: 90%; /* 宽度 90% */
   }
 }
